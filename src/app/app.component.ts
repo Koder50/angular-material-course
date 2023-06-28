@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatSlider} from '@angular/material/slider';
 
 @Component({
   selector: 'app-root',
