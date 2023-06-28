@@ -8,4 +8,10 @@ import { MatSlider} from '@angular/material/slider';
 })
 export class AppComponent {
 
+  // value: number=4;
+
+  // reset() {
+  //   this.value=0;
+  // }
+
 }

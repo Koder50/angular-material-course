@@ -11,3 +11,11 @@ mat-toolbar a {
   color: white;
 }
 
+mat-slider {
+  width: 300px;
+}
+
+.valueMargin,.buttonMargin{
+  margin-left: 10px;
+}
+
