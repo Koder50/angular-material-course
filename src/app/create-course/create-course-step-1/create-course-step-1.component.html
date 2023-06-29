@@ -30,6 +30,51 @@
 
     </mat-form-field> -->
 
+    <mat-radio-group class="course-type" formControlName="courseType" color="primary">
+
+        <mat-radio-button [disabled]="true" value="free" labelPosition="before">Free</mat-radio-button>
+
+        <mat-radio-button value="premium" labelPosition="before">Premium</mat-radio-button>
+
+    </mat-radio-group>
+
+    <mat-form-field>
+
+        <mat-select formControlName="category"
+        placeholder="Select category">
+    
+            <mat-option>None</mat-option>
+
+            <mat-optgroup label="Beginners">
+
+                <mat-option value="newprogramming">New To Programming</mat-option>
+                <mat-option value="newjavascript">New To Javascript</mat-option>
+                <mat-option value="newangular">New To Angular</mat-option>
+
+            </mat-optgroup>
+
+            <mat-option value="INTERMEDIATE">Intermediate</mat-option>
+            <mat-option value="ADVANCED">Advanced</mat-option>
+
+        </mat-select>
+        
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+
+        <input matInput formControlName="releasedAt"
+        placeholder="Release date" [matDatepicker]="releasedAtPicker">
+
+        <mat-datepicker-toggle matSuffix [for]="releasedAtPicker">
+
+        </mat-datepicker-toggle>
+
+        <mat-datepicker #releasedAtPicker [dateClass]="dateClass">
+
+        </mat-datepicker>
+
+    </mat-form-field>
+
 </div>
 
 
