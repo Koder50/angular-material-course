@@ -29,6 +29,8 @@ export class CourseComponent implements OnInit, AfterViewInit {
     @ViewChild(MatSort)
     sort: MatSort;
 
+    dataSource;
+
     lessons: Lesson[]=[]; //= [
     //    {
     //     id: 120,
@@ -119,7 +121,7 @@ export class CourseComponent implements OnInit, AfterViewInit {
         this.course = this.route.snapshot.data["course"];
 
         this.loadLessonsPage();
-
+  
     }
 
     loadLessonsPage() {
@@ -130,28 +132,41 @@ export class CourseComponent implements OnInit, AfterViewInit {
       this.paginator?.pageSize?? 3,
       this.sort?.active ?? "seqNo")
         .pipe(
-          tap(lessons=>{this.lessons=lessons}),
+          tap(lessons=>{
+            this.lessons=lessons;
+            
+            this.dataSource=new MatTableDataSource(this.lessons);
+            if(this.sort) {
+            this.dataSource.sort = this.sort;
+            }
+            
+            this.dataSource.filterPredicate =
+            (data: Lesson, filter:string)=>data.description.indexOf( filter)!=-1;
+            this.dataSource.filter = "";
+
+                }),
           catchError(err=>{
             console.log("Error loading lessons",err);
             alert("Error loading lessons")
             return throwError(err);
           }
           ),
-          finalize(()=>this.isLoading=false)
+          finalize(()=>{this.isLoading=false;
+          })
         )
         .subscribe()
     }
 
     ngAfterViewInit() {
 
-      this.sort.sortChange.subscribe(()=>this.paginator.pageIndex=0);
+      //this.sort.sortChange.subscribe(()=>this.paginator.pageIndex=0);
 
-      merge(this.sort.sortChange,this.paginator.page)
+      //merge(this.sort.sortChange,this.paginator.page)
+      this.paginator.page
       .pipe(
         tap(()=>this.loadLessonsPage())
       )
       .subscribe();
-
     }
 
 }
