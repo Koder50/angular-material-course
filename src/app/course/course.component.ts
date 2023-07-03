@@ -21,6 +21,8 @@ export class CourseComponent implements OnInit, AfterViewInit {
 
     displayedColumns:string[]=["seqNo","description","duration"];
 
+    expandedLesson: Lesson=null;
+
     isLoading: boolean=false;
 
     @ViewChild(MatPaginator)
@@ -140,6 +142,13 @@ export class CourseComponent implements OnInit, AfterViewInit {
           finalize(()=>this.isLoading=false)
         )
         .subscribe()
+    }
+
+    onToggleLesson(lesson: Lesson) {
+      if(this.expandedLesson==lesson) {
+        this.expandedLesson=null;
+      }
+      else this.expandedLesson=lesson;
     }
 
     ngAfterViewInit() {
