@@ -8,48 +8,74 @@
     <mat-spinner></mat-spinner>
   </div>
 
-  <table mat-table class="lessons-table mat-elevation-z8"
-  matSort matSortDisableClear matSortActive="seqNo" matSortDirection="asc"
-  [dataSource]="lessons" multiTemplateDataRows>
+  <div class="scrolling-container">
 
-    <ng-container matColumnDef="seqNo">
+    <table mat-table class="lessons-table mat-elevation-z8"
+    matSort matSortDisableClear matSortActive="seqNo" matSortDirection="asc"
+    [dataSource]="lessons" multiTemplateDataRows>
 
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>#</th>
+    <ng-container matColumnDef="select" sticky>
 
-      <td mat-cell *matCellDef="let lesson">{{lesson.seqNo}}</td>
+      <th mat-header-cell *matHeaderCellDef>
 
-    </ng-container>
+        <mat-checkbox [checked]="selection.hasValue() && isAllSelected()" 
+          [indeterminate]="selection.hasValue() && !isAllSelected()"
+        (change)="toggleAll()">
 
-    <ng-container matColumnDef="description">
+        </mat-checkbox>
 
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
+      </th>
 
-      <td mat-cell *matCellDef="let lesson">{{lesson.description}}</td>
+      <td mat-cell *matCellDef="let lesson" (click)="$event.stopPropagation()">
 
-    </ng-container>
+        <mat-checkbox (change)="onLessonToggled(lesson)" [checked]="selection.isSelected(lesson)">
 
-    <ng-container matColumnDef="duration">
+        </mat-checkbox>
 
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Duration</th>
-
-      <td class="duration-cell" mat-cell *matCellDef="let lesson">{{lesson.duration}}</td>
-
-    </ng-container>
-
-    <ng-container matColumnDef="expandedDetail">
-
-      <td mat-cell *matCellDef="let lesson" colspan="3">{{lesson.longDescription}}</td>
+      </td>
 
     </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <ng-container matColumnDef="seqNo" sticky>
 
-    <tr mat-row *matRowDef="let lesson; columns:displayedColumns" (click)="onToggleLesson(lesson)" ></tr>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>#</th>
 
-    <tr mat-row *matRowDef="let lesson; columns:['expandedDetail']"
-    [class.collapsed-detail]="lesson!=expandedLesson"></tr>
+        <td mat-cell *matCellDef="let lesson">{{lesson.seqNo}}</td>
 
-  </table>
+      </ng-container>
+
+      <ng-container matColumnDef="description">
+
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
+
+        <td mat-cell *matCellDef="let lesson">{{lesson.description}}</td>
+
+      </ng-container>
+
+      <ng-container matColumnDef="duration">
+
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Duration</th>
+
+        <td class="duration-cell" mat-cell *matCellDef="let lesson">{{lesson.duration}}</td>
+
+      </ng-container>
+
+      <ng-container matColumnDef="expandedDetail">
+
+        <td mat-cell *matCellDef="let lesson" colspan="4">{{lesson.longDescription}}</td>
+
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></tr>
+
+      <tr mat-row *matRowDef="let lesson; columns:displayedColumns" (click)="onToggleLesson(lesson)" ></tr>
+
+      <tr mat-row *matRowDef="let lesson; columns:['expandedDetail']"
+      [class.collapsed-detail]="lesson!=expandedLesson"></tr>
+
+    </table>
+
+  </div>
 
   <mat-paginator class="mat-elevation-z8"
     [length]="course?.lessonsCount"
