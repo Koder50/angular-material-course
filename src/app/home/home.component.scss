@@ -25,3 +25,19 @@ h2 {
 :host ::ng-deep .mat-mdc-tab-group.mat-mdc-tab-group-stretch-tabs>.mat-mdc-tab-header .mat-mdc-tab {
   flex-grow: 0 !important;
 }
+
+:host ::ng-deep .mat-mdc-tab-group.mat-mdc-tab-group-stretch-tabs>.mat-mdc-tab-header .mat-mdc-tab:first-of-type {
+  flex-grow: 0 !important;
+  width: 120px !important;
+}
+
+:host ::ng-deep .mat-mdc-tab-group.mat-mdc-tab-group-stretch-tabs>.mat-mdc-tab-header .mat-mdc-tab:last-of-type {
+  flex-grow: 0 !important;
+  width: calc(100% - 120px) !important;
+}
+
+:host ::ng-deep .mdc-tab {
+  display: flex;
+  justify-content: flex-start;
+  border-bottom: 1px solid gainsboro; 
+}

@@ -18,10 +18,10 @@
   <mat-tab-group selectedIndex="1">
 
     <mat-tab label="Beginners">
+          
+          <courses-card-list [courses]="beginnerCourses$ | async">
 
-      <courses-card-list [courses]="beginnerCourses$ | async">
-
-      </courses-card-list>
+          </courses-card-list>
 
     </mat-tab>
 
