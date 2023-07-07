@@ -1,0 +1,195 @@
+<mat-sidenav-container [class.smallerScreenHeight]="!show" [class.show]="show">
+    
+  <mat-sidenav #sidenav>
+
+
+      <mat-nav-list (click)="sidenav.close(); toggleShow()">
+
+        
+        <a mat-list-item>
+          <mat-icon>arrow_back_ios</mat-icon>
+          <span>Back</span>
+    
+        </a>
+
+        <a mat-list-item routerLink="/">
+          <mat-icon>library_books</mat-icon>
+          <span>Courses</span>
+
+        </a>
+
+        <a mat-list-item routerLink="about">
+          <mat-icon>question_answer</mat-icon>
+          <span>About</span>
+
+        </a>
+
+      
+      </mat-nav-list>
+
+      
+
+  </mat-sidenav>
+
+  <button mat-icon-button (click)="sidenav.open(); toggleShow();">
+    <mat-icon>menu</mat-icon>
+</button>
+
+</mat-sidenav-container>
+
+<div class="container">
+
+  <!-- <mat-slider min="1" max="100" step="1" value="50">
+    <input matSliderThumb>
+</mat-slider> -->
+
+  <div class="my-components">
+
+    <h3>My Components Demo</h3>
+
+    <h4>1. Autocomplete</h4>
+
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <mat-label>Number</mat-label>
+        <input type="text"
+               placeholder="Pick one"
+               aria-label="Number"
+               matInput
+               [formControl]="myControl"
+               [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let option of options" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </form>
+
+    <h4>2. Badge</h4>
+
+    <div class="demo-section">
+      Icon with a badge
+      <mat-icon matBadge="15" matBadgeSize="small" matBadgePosition="after" matBadgeColor="warn">home</mat-icon>
+    </div>
+
+    <h4 class="buttonToggleLabel">3. Button Toggle</h4>
+
+    <mat-checkbox [(ngModel)]="isChecked"
+                  color="primary"
+                  (change)="toggleCheck($event.checked)" class="multipleOrSingelButtonToggleChoosingCheckbox">
+      multiple button toggle
+    </mat-checkbox>
+
+    <div class="checkboxInfo">
+      Button toggle is now: <strong><span>{{isChecked ? "multiple." : "single."}}</span></strong>
+    </div>
+
+    <div class="buttonToggle">
+      <mat-button-toggle-group name="fontStyle" aria-label="Font Style" *ngIf="!isChecked">
+        <mat-button-toggle value="bold">Bold</mat-button-toggle>
+        <mat-button-toggle value="italic">Italic</mat-button-toggle>
+        <mat-button-toggle value="underline">Underline</mat-button-toggle>
+      </mat-button-toggle-group>
+
+      <mat-button-toggle-group name="fontStyle" aria-label="Font Style" multiple *ngIf="isChecked">
+        <mat-button-toggle value="bold">Bold</mat-button-toggle>
+        <mat-button-toggle value="italic">Italic</mat-button-toggle>
+        <mat-button-toggle value="underline">Underline</mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+
+    <h4 class="chipsLabel">4. Chips</h4>
+    
+    <div class="chips">
+
+      <mat-chip-listbox aria-label="Fish selection">
+        <mat-chip-option>One</mat-chip-option>
+        <mat-chip-option disabled>Two</mat-chip-option>
+        <mat-chip-option color="accent" selected>Accent three</mat-chip-option>
+        <mat-chip-option color="warn">Warn four</mat-chip-option>
+      </mat-chip-listbox>
+
+    </div>
+
+    <h4 class="dividerLabel">5. Divider</h4>
+
+    <div class="allDividers">
+      <mat-list>
+        <mat-list-item>Item 1</mat-list-item>
+        <mat-divider  [inset]="true"></mat-divider>
+        <mat-list-item>Item 2</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>Item 3</mat-list-item>       
+      </mat-list>
+    </div>
+
+    <div>
+
+      <mat-list class="allDividersVertical">
+        <mat-list-item>Item 1</mat-list-item>
+        <mat-divider  [vertical]="true" class="divider"></mat-divider>
+        <mat-list-item>Item 2</mat-list-item>
+        <mat-divider [vertical]="true" class="divider"></mat-divider>
+        <mat-list-item>Item 3</mat-list-item>       
+      </mat-list>
+    </div>
+
+    <h4 class="progressBarLabel">6. Progress bar</h4>
+
+    <div class="progressBar">
+
+      <mat-form-field class="progressValue">
+        <mat-label>Progress Value</mat-label>
+        <input matInput placeholder="0" value="0" (input)="changeValue($event.target.value)">
+      </mat-form-field>
+
+      <mat-progress-bar mode="determinate" [value]="inputValue"></mat-progress-bar>
+
+    </div>
+
+    <h4 class="progressSpinnerLabel">7. Progress spinner</h4>
+
+    <div class="progressSpinner">
+
+      <mat-spinner mode="determinate" [value]="inputValue" color="primary"></mat-spinner>
+
+    </div>
+
+    <h4 class="radioButtonLabel">8. Radio button</h4>
+
+    <mat-radio-group aria-label="Select an option" color="primary" (change)="changeValueOfRadioButton($event.value)">
+      <mat-radio-button value="Progress spinner on" checked labelPosition="before">Progress spinner on</mat-radio-button>
+      <mat-radio-button value="Progress spinner off">Progress spinner off </mat-radio-button>
+    </mat-radio-group>
+
+    <h4 class="radioButtonLabel">9. Ripples</h4>
+
+    <div matRipple>
+      <mat-radio-group aria-label="Select an option" color="primary">
+        <mat-radio-button value="Progress spinner on" checked labelPosition="before">Progress spinner on</mat-radio-button>
+        <mat-radio-button value="Progress spinner off">Progress spinner off </mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <h4 class="snackBarLabel">10. Snackbar</h4>
+
+    <mat-form-field>
+      <mat-label>Message</mat-label>
+      <input matInput value="Disco party!" #message>
+    </mat-form-field>
+    
+    <mat-form-field class="actionPadding">
+      <mat-label>Action</mat-label>
+      <input matInput value="Dance" #action>
+    </mat-form-field>
+    
+    <button mat-stroked-button (click)="openSnackBar(message.value, action.value)">Show snack-bar</button>
+
+
+  </div>
+
+  <mat-spinner class="middleSpinner" [class.progressSpinnerOff]="!this.isProgressSpinnerOn"></mat-spinner>
+
+</div>
+

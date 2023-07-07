@@ -9,6 +9,7 @@ import { MatButtonModule} from '@angular/material/button'
 import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
 import { HomeComponent } from './home/home.component';
+import { MyComponentsComponent } from './my-components/my-components.component';
 import { AboutComponent } from './about/about.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import { CoursesCardListComponent } from './courses-card-list/courses-card-list.component';
@@ -45,6 +46,15 @@ import {TreeDemoComponent} from './tree-demo/tree-demo.component';
 import {MatTreeModule} from '@angular/material/tree';
 import {VirtualScrollingComponent} from './virtual-scrolling/virtual-scrolling.component';
 import {ScrollingModule} from '@angular/cdk/scrolling';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { CommonModule } from '@angular/common';
+import {MatBadgeModule} from '@angular/material/badge';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
     declarations: [
@@ -59,9 +69,17 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
         CreateCourseStep2Component,
         DragDropComponent,
         TreeDemoComponent,
-        VirtualScrollingComponent
+        VirtualScrollingComponent,
+        MyComponentsComponent
     ],
     imports: [
+        MatFormFieldModule,
+        MatFormFieldModule,
+        ReactiveFormsModule, 
+        MatInputModule,
+        MatAutocompleteModule,
+        CommonModule, 
+        MatFormFieldModule,
         MatRippleModule,
         MatSliderModule,
         FormsModule,
@@ -94,7 +112,13 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
         ReactiveFormsModule,
         MatGridListModule,
         MatTreeModule,
-        ScrollingModule
+        ScrollingModule,
+        MatBadgeModule,
+        MatButtonToggleModule,
+        MatChipsModule,
+        MatDividerModule,
+        MatProgressBarModule,
+        MatSnackBarModule
     ],
     providers: [
         CoursesService

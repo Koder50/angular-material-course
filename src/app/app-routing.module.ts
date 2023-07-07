@@ -8,6 +8,7 @@ import {CreateCourseComponent} from './create-course/create-course.component';
 import {DragDropComponent} from './drag-drop/drag-drop.component';
 import {TreeDemoComponent} from './tree-demo/tree-demo.component';
 import {VirtualScrollingComponent} from './virtual-scrolling/virtual-scrolling.component';
+import { MyComponentsComponent } from './my-components/my-components.component';
 
 const routes: Routes = [
     {
@@ -42,6 +43,11 @@ const routes: Routes = [
     path: 'virtual-scrolling',
     component: VirtualScrollingComponent
   },
+  {
+    path: 'my-components',
+    component: MyComponentsComponent
+  }
+  ,
     {
         path: "**",
         redirectTo: '/'
