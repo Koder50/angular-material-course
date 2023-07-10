@@ -3,7 +3,10 @@
 
   <div class="header">
 
-    <h2 class="title">All Courses</h2>
+    <h2 class="title" [matTooltip]="'All Courses'" matTooltipPosition="before"
+    [matTooltipShowDelay]="1000"
+    [matTooltipHideDelay]="2000"
+    [matTooltipDisabled]="!tooltipDisable">All Courses</h2>
 
     <button mat-mini-fab routerLink="/add-new-course"
       [matTooltip]="'Create a course'" matTooltipPosition="above"

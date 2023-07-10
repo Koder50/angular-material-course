@@ -186,6 +186,48 @@
     
     <button mat-stroked-button (click)="openSnackBar(message.value, action.value)">Show snack-bar</button>
 
+    <h4 class="stepperLabel">12.Stepper</h4>
+
+    <mat-horizontal-stepper class="mat-elevation-z5"
+  labelPosition="above" [linear]="false">
+
+    <mat-step errorMessage="Test detail in error">
+
+      <ng-template matStepLabel>Test Details</ng-template>
+
+      <div class="stepper-buttons">
+
+        <div class="stepLabel">
+          Step 1 - content
+        </div>
+
+        <button mat-raised-button color="primary" matStepperNext>
+          Add Test Lessons
+        </button>
+
+      </div>
+
+    </mat-step>
+
+    <mat-step errorMessage="Test lessons in error">
+
+      <ng-template matStepLabel>Test Lessons</ng-template>
+
+      <div class="stepper-buttons">
+
+        <div class="stepLabel">
+          Step 2 - content
+        </div>
+
+        <button mat-raised-button matStepperPrevious>Back</button>
+
+        <button mat-raised-button color="warn">Create Test</button>
+
+      </div>
+
+    </mat-step>
+
+  </mat-horizontal-stepper>
 
   </div>
 
