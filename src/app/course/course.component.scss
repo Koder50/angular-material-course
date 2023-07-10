@@ -1,7 +1,7 @@
 
 .course {
     text-align: center;
-    width: 400px;
+    width: 810px;
     margin: 40px auto;
 }
 
@@ -98,4 +98,8 @@ mat-paginator {
 
 .scrolling-container::-webkit-scrollbar {
   width: 16px;
+}
+
+.bothTables {
+  display: flex;
 }

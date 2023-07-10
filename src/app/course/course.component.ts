@@ -34,6 +34,73 @@ export class CourseComponent implements OnInit, AfterViewInit {
 
     selection = new SelectionModel<Lesson>(true,[]);
 
+    tests: any[]=[{
+      number: 1,
+      "description": "desc1"
+    },
+    {
+      number: 2,
+      "description": "desc2"
+    },
+    {
+      number: 3,
+      "description": "desc3"
+    },
+    {
+      number: 4,
+      "description": "desc4"
+    },
+    {
+      number: 5,
+      "description": "desc5"
+    },
+    {
+      number: 6,
+      "description": "desc6"
+    },
+    {
+      number: 7,
+      "description": "desc7"
+    },
+    {
+      number: 8,
+      "description": "desc8"
+    },
+    {
+      number: 9,
+      "description": "desc9"
+    },
+    {
+      number: 10,
+      "description": "desc10"
+    },
+    {
+      number: 11,
+      "description": "desc11"
+    },
+    {
+      number: 12,
+      "description": "desc12"
+    },
+    {
+      number: 13,
+      "description": "desc13"
+    },
+    {
+      number: 14,
+      "description": "desc14"
+    },
+    {
+      number: 15,
+      "description": "desc15"
+    },
+    {
+      number: 16,
+      "description": "desc16"
+    }];
+
+    displayedColumns2:string[]=["number","description"];
+
     lessons: Lesson[]=[]; //= [
     //    {
     //     id: 120,
